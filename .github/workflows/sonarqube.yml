@@ -1,0 +1,17 @@
+name: SonarQube Analysis
+on:
+  push:
+    branches:
+      - main
+jobs:
+  sonarqube:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+    - name: SonarQube Scan
+      uses: sonarsource/sonarqube-scan-action@master
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        SONAR_HOST_URL: "Địa_chỉ_ngrok_của_bạn" # Thay bằng link ngrok đang chạy SonarQube
